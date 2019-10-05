@@ -8,43 +8,53 @@ __email__ = "gchacaltanab@gmail.com"
 from Node import Node
 
 class App(object):
-    nodes = {}
-    def __init__(self):
-        self.initNodes()
+    listNodes = []
+    parentNode = {}
+    def __init__(self, nodes):
+        self.nodes = nodes
+        self.createNodes()
 
-    def initNodes(self):
-        self.nodes["Tumbes"] = ["Trujillo", "Moyobamba", "Iquitos"]
-        self.nodes["Trujillo"] = ["Lima", "Huancayo"]
-        self.nodes["Lima"] = ["Ica", "Ayacucho"]
-        self.nodes["Ica"] = ["Arequipa"]
-        self.nodes["Arequipa"] = ["Moquegua"]
-        self.nodes["Moyobamba"] = ["Huancayo"]
-        self.nodes["Huancayo"] = ["Ayacucho", "Cusco"]
-        self.nodes["Ayacucho"] = ["Abancay", "Ica"]
-        self.nodes["Cusco"] = ["Puno", "Arequipa"]
-        self.nodes["Puno"] = ["Moquegua"]
-        self.nodes["Moquegua"] = ["Tacna"]
-        self.nodes["Iquitos"] = ["Pucallpa"]
-        self.nodes["Pucallpa"] = ["Huancayo"]
-        #node1 = Node("Tumbes")
-        #node2 = Node("Trujilo")
-        #node3 = Node("Iquitos")
-        #node4 = Node("Moyobamba")
-        #node1.addChild(node2)
-        #node1.addChild(node3)
-        #node1.addChild(node4)
-        contador = 0
+    def createNodes(self):
+        i = 0
         for n in self.nodes:
-            contador +=1
-            print("Padre: ", n)
-            for e in self.nodes[n]:
-                print("Child: ", e)
-            if (contador==1):
-                break
+            i +=1
+            self.parentNode[i] = Node(n)
+            #print(i)
+            #print([c for c in self.nodes[n]])
+            #print("-----------")
+            for cn in self.nodes[n]:
+                childNode = None
+                childNode = Node(cn)
+                self.parentNode[i].addChild(childNode)
+                if cn not in [node.name for node in self.listNodes]:
+                    self.listNodes.append(childNode)
+            #print(parentNode[i].name)
+            #print(parentNode[i].getChildrenNodes())
+            #print("**********")
+            if n not in [node.name for node in self.listNodes]:
+                self.listNodes.append(self.parentNode[i])
 
     def displayNodes(self):
-        print([n for n in self.nodes])
+        print([n.name for n in self.listNodes])
 
 if __name__ == "__main__":
-    app = App()
+    nodes = {}
+    nodes["Tumbes"] = ["Trujillo", "Moyobamba", "Iquitos"]
+    nodes["Trujillo"] = ["Lima", "Huancayo"]
+    nodes["Lima"] = ["Ica", "Ayacucho"]
+    nodes["Ica"] = ["Arequipa"]
+    nodes["Arequipa"] = ["Moquegua"]
+    nodes["Moyobamba"] = ["Huancayo"]
+    nodes["Huancayo"] = ["Ayacucho", "Cusco"]
+    nodes["Ayacucho"] = ["Abancay", "Ica"]
+    nodes["Cusco"] = ["Puno", "Arequipa"]
+    nodes["Puno"] = ["Moquegua"]
+    nodes["Moquegua"] = ["Tacna"]
+    nodes["Iquitos"] = ["Pucallpa"]
+    nodes["Pucallpa"] = ["Huancayo"]
+    app = App(nodes)
     #app.displayNodes()
+    for i in app.parentNode:
+        print("Nodo Padre: ", app.parentNode[i].name)
+        print("Nodos Hijos: ", app.parentNode[i].getChildrenNodes())
+    
