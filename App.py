@@ -28,9 +28,6 @@ class App(object):
                 self.parentNode[i].addChild(childNode)
                 if cn not in [node.name for node in self.listNodes]:
                     self.listNodes.append(childNode)
-            #print(parentNode[i].name)
-            #print(parentNode[i].getChildrenNodes())
-            #print("**********")
             if n not in [node.name for node in self.listNodes]:
                 self.listNodes.append(self.parentNode[i])
 
