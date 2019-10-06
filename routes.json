@@ -1,7 +1,7 @@
 {
 	"Tumbes": {
 		"Trujillo": null,
-		"Moyombamba": null,
+		"Moyobamba": null,
 		"Iquitos": null
 	},
 	"Trujillo": {
@@ -30,5 +30,8 @@
 	},
 	"Cusco": {
 		"Arequipa": null
+	},
+	"Arequipa": {
+		"Arequipa":null
 	}
 }
