@@ -7,13 +7,18 @@ from Node import Node
 
 
 class BFS(object):
-    def __init__(self, firstNode, searched):
-        self.queue = []
-        self.addQueue(firstNode)
+    def __init__(self, listNodes, searched):
+        self.listNodes = listNodes
         self.searched = searched
+        self.createQueue()
+
+    def createQueue(self):
+        self.queue = []
+        self.queue.append(self.listNodes[0])
 
     def addQueue(self, node):
-        self.queue.append(node)
+        if node.name not in [n.name for n in self.queue]:
+            self.queue.append(node)
 
     def readQueue(self):
         return self.queue.pop(0)
@@ -21,24 +26,38 @@ class BFS(object):
     def getQueueLen(self):
         return len(self.queue)
 
+    def getNodeFromList(self, name):
+        for node in self.listNodes:
+            if node.name == name:
+                return node
+
+    def validateLenQueue(self):
+        if self.getQueueLen() == 0:
+            raise Exception("La cola esta vacia")
+
+    def matchSearched(self, nodeName):
+        if nodeName == self.searched:
+            raise Exception("Ciudad encontrada: %s" % nodeName)
+
     def search(self):
-        nodeName = None
-        count = 0
-        while(True):
-            count += 1
-            print("elementos queue: ", self.getQueueLen())
-            if self.getQueueLen() > 0:
+        try:
+            nodeName = None
+            count = 0
+            while(True):
+                self.validateLenQueue()
+                count += 1
+                print("\nIteracion: ", count)
                 node = self.readQueue()
                 print("Leyendo %s" % (node.name))
-                if node.name == self.searched:
-                    break
-                else:
-                    childrenNodes = node.getChildrenNodes()
-                    for child in childrenNodes:
-                        self.addQueue(child)
-                    print([n.name for n in self.queue])
-            else:
-                print("La cola se quedo sin elementos")
-                break
-            if count == 20:
-                break
+                self.matchSearched(node.name)
+                self.insertNodeChildQueue(node)
+                print("Queue: ", [n.name for n in self.queue])
+        except (Exception) as error:
+            print(error)
+
+    def insertNodeChildQueue(self, node):
+        childrenNodes = node.getChildrenNodes()
+        for child in childrenNodes:
+            childNode = self.getNodeFromList(child.name)
+            if (isinstance(childNode, Node)):
+                self.addQueue(childNode)
