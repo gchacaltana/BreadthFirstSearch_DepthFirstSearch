@@ -8,6 +8,7 @@ import json
 from Node import Node
 from BFS import BFS
 
+
 class App(object):
 
     def __init__(self):
@@ -23,6 +24,7 @@ class App(object):
 
     def createNodes(self, routes):
         i = 0
+        print("\nCargando los nodos")
         for n in routes:
             i += 1
             self.parentNode[i] = Node(n)
@@ -36,10 +38,15 @@ class App(object):
         print([n.name for n in self.listNodes])
 
     def breadthFirstSearch(self):
-        print("Busqueda Breadth First Search")
-        bsf = BFS(self.listNodes[0], "Arequipa")
+        print("\nIniciando Busqueda Breadth First Search")
+        print("------------------------------")
+        bsf = BFS(self.listNodes, "Arequipa")
         bsf.search()
 
+
 if __name__ == "__main__":
-    app = App()
-    app.main("routes.json")
+    try:
+        app = App()
+        app.main("routes.json")
+    except (ValueError, FileNotFoundError, AttributeError) as ex:
+        print(ex)
