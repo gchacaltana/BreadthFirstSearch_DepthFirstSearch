@@ -1,34 +1,34 @@
 {
 	"Tumbes": {
-		"1": "Trujillo",
-		"2": "Moyombamba",
-		"3": "Iquitos"
+		"Trujillo": null,
+		"Moyombamba": null,
+		"Iquitos": null
 	},
 	"Trujillo": {
-		"1": "Lima",
-		"2": "Huancayo"
+		"Lima": null,
+		"Huancayo": null
 	},
 	"Moyobamba": {
-		"1": "Huancayo"
+		"Huancayo": null
 	},
 	"Iquitos": {
-		"1": "Huancayo",
-		"2": "Cusco"
+		"Huancayo": null,
+		"Cusco": null
 	},
 	"Lima": {
-		"1": "Nazca"
+		"Nazca": null
 	},
 	"Huancayo": {
-		"1": "Arequipa",
-		"2": "Puno"
+		"Arequipa": null,
+		"Puno": null
 	},
 	"Nazca": {
-		"1": "Arequipa"
+		"Arequipa": null
 	},
 	"Puno": {
-		"1": "Arequipa"
+		"Arequipa": null
 	},
 	"Cusco": {
-		"1": "Arequipa"
+		"Arequipa": null
 	}
 }
