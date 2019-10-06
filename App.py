@@ -7,7 +7,7 @@ __email__ = "gchacaltanab@gmail.com"
 import json
 from Node import Node
 from BFS import BFS
-
+from DFS import DFS
 
 class App(object):
 
@@ -22,6 +22,7 @@ class App(object):
         self.createNodes()
         self.displayNodes()
         self.breadthFirstSearch()
+        self.depthFirstSearch()
 
     def openFile(self):
         print("\n1. Abriendo fichero")
@@ -48,7 +49,12 @@ class App(object):
         print("------------------------------------------")
         bsf = BFS(self.listNodes, self.searched)
         bsf.search()
-
+    
+    def depthFirstSearch(self):
+        print("\nIniciando Busqueda Depth First Search")
+        print("------------------------------------------")
+        dfs = DFS(self.listNodes, self.searched)
+        dfs.search()
 
 if __name__ == "__main__":
     try:
