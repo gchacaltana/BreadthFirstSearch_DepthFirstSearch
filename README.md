@@ -13,6 +13,7 @@
 Implementar los algoritmos DFS y BFS para encontrar el camino del viajero de la ciudad de Tumbes hacia la ciudad de Arequipa según el mapa.
 
 ![Ruta de un viajero](http://www.solocodigoweb.com/wp-content/uploads/2019/10/ruta_de_un_viajero_dfs_bfs.jpg)
+
 *Créditos: Mirko Rodriguez.*
 
 ## Rutas en JSON
