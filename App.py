@@ -6,7 +6,7 @@ __email__ = "gchacaltanab@gmail.com"
 
 import json
 from Node import Node
-
+from BFS import BFS
 
 class App(object):
 
@@ -14,11 +14,12 @@ class App(object):
         self.listNodes = []
         self.parentNode = {}
 
-    def main(self):
-        with open("routes.json", "r") as f:
+    def main(self, jsonfile):
+        with open(jsonfile, "r") as f:
             routes = json.load(f)
         self.createNodes(routes)
         self.displayNodes()
+        self.breadthFirstSearch()
 
     def createNodes(self, routes):
         i = 0
@@ -31,9 +32,14 @@ class App(object):
             self.listNodes.append(self.parentNode[i])
 
     def displayNodes(self):
+        print("Lista de Nodos")
         print([n.name for n in self.listNodes])
 
+    def breadthFirstSearch(self):
+        print("Busqueda Breadth First Search")
+        bsf = BFS(self.listNodes[0], "Arequipa")
+        bsf.search()
 
 if __name__ == "__main__":
     app = App()
-    app.main()
+    app.main("routes.json")

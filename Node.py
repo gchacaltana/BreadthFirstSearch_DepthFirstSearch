@@ -15,4 +15,4 @@ class Node(object):
         self.childNodes.append(node)
 
     def getChildrenNodes(self):
-        return [child.name for child in self.childNodes]
+        return self.childNodes
